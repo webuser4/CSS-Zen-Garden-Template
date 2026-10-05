@@ -1,1 +1,21 @@
 /* Empty file for template. Remember to edit only this file and not the HTML file */
+
+section.intro > header, div.summary {
+    background-color: #F3F3F3;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+
+section.intro > header {
+    padding-bottom: .2rem;
+}
+
+section.intro > div.summary {
+    padding-top: .2rem;
+    border-radius: 0 0 .25rem .25rem;
+}
+
+.sidebar {
+    background-color: #F3F3F3;
+    border-radius: .25rem
+}
