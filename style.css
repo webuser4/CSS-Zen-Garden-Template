@@ -1,6 +1,10 @@
 /* Empty file for template. Remember to edit only this file and not the HTML file */
 @import url('https://googleapis.com');
 
+:root {
+    --roboto: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --inter: 'Inter', sans-serif;
+}
 
 body {
     margin: 0;
@@ -17,8 +21,7 @@ body {
 
 .intro h1 {
     font-size: 4rem;
-    font: bold;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: var(--roboto);
     padding: 0 1rem;
     margin-bottom: 0;
 }
@@ -35,19 +38,24 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+/* makes top bar + makes it not scroll */
 
 .intro h2 {
     font-size: 2rem;
     padding: 0 1.2rem;
     margin-bottom: 0;
+    font-family: var(--roboto);
 }
 
 .summary p {
     padding: 0 1.5rem;
-    font-family: 'Inter', sans-serif;
-    /* margin-bottom: 2.5rem; */
     font-size: 1.25rem;
 }
+
+* p {
+    font-family: var(--inter);
+} 
+/* gives all p inter font */
 
 .preamble {
     margin-left: 11px;
@@ -56,12 +64,11 @@ body {
 
 .preamble p {
     font-size: 1.5rem; 
-    font-family: 'Inter', sans-serif;
 }
 
 .preamble h3 {
     font-size: 2rem;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: var(--roboto);
 }
 
 #zen-supporting {
@@ -73,13 +80,12 @@ body {
 }
 
 #zen-supporting p {
-    font-family: 'Inter', sans-serif;
     font-size: 1.5rem;
 }
 
 #zen-supporting h3 {
     font-size: 2rem;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: var(--roboto);
 }
 
 .page-wrapper {
@@ -92,6 +98,7 @@ body {
 ::-webkit-scrollbar {
     display: none;
 }
+/* hides scrollbar */
 
 section.intro > header, div.summary {
     background-color: #F3F3F3;
@@ -109,7 +116,6 @@ section.intro > div.summary {
     margin: 220px 11px 0 0;
     display: flex;
     justify-content: left;
-    /* padding-left: 1rem; */
     position: absolute;
     background: #D9D9D9;
     background: linear-gradient(0deg, rgba(217, 217, 217, 1) 0%, rgba(217, 217, 217, 1) 50%, rgba(243, 243, 243, 1) 50%, rgba(243, 243, 243, 1) 100%);
@@ -124,12 +130,27 @@ section.intro > div.summary {
 .sidebar ul > li {
     font-size: 2rem;
     list-style-type: none;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
+}
+
+.design-selection li:not(:last-child)::after {
+    content:"";
+    display: block;
+    padding-bottom: 35px;
+    border-bottom: 2px solid black;
+    width: 115%;
+}
+
+/* adds seperators */
+
+li a:first-child {
+    display: block;
 }
 
 .sidebar h3 {
     display: none;
 }
+/* hides "select a design" */
 
 .design-selection, .zen-resources {
     justify-content: flex-end;
@@ -148,6 +169,7 @@ footer::before {
     background-position: left bottom;
     background-size: cover;
 }
+/* makes the bottom bar + makes it not scroll */
 
 .zen-github {
     padding-bottom: 7rem;
@@ -162,12 +184,16 @@ footer {
 [role="contentinfo"] {
     color: #878787;
     font-size: 1rem;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--inter);
     text-align: end;
 }
 
-.design-archives {
-    margin: 15rem 0 0;
+.design-archives .next {
+    margin-top: 5rem;
+}
+
+.design-archives li:not(:first-child) {
+    margin-top: 5rem;
 }
 
 .design-name {
@@ -176,4 +202,28 @@ footer {
 
 .design-name:visited {
     color: rgb(113, 113, 113);
+}
+
+a:active {
+    color:red
+}
+
+a:hover {
+    color:blue
+}
+
+[role="contentinfo"] a:link {
+    color: #878787;
+}
+
+[role="contentinfo"] a:visited {
+    color:black;
+}
+
+[role="contentinfo"] a:hover {
+    color:blue;
+}
+
+::selection {
+  background: yellow;
 }
