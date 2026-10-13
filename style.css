@@ -1,29 +1,48 @@
 /* Empty file for template. Remember to edit only this file and not the HTML file */
-@import url('https://googleapis.com');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+/* loads inter font */
 
 :root {
     --roboto: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     --inter: 'Inter', sans-serif;
 }
+/* font shortcuts */
 
-body {
+[lang|="en"] body {
     margin: 0;
     height: 100vh;
 }
+/* the body (html has lang="en") */
+
+body > div:nth-of-type(1) {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 120vh;
+}
+/* the page wrapper */
+
+body > div:empty {
+    display: none;
+}
+/* hides the empty divs at the bottom */
+
+::-webkit-scrollbar {
+    display: none;
+}
+/* hides scrollbar */
+
+* p {
+    font-family: var(--inter);
+}
+/* gives all p inter font */
 
 .intro {
     margin: 220px 0 0 0;
     display: flex;
     justify-content: left;
-    flex-direction:column;
+    flex-direction: column;
     width: 77%;
-}
-
-.intro h1 {
-    font-size: 4rem;
-    font-family: var(--roboto);
-    padding: 0 1rem;
-    margin-bottom: 0;
 }
 
 .intro h1::before {
@@ -40,36 +59,56 @@ body {
 }
 /* makes top bar + makes it not scroll */
 
-.intro h2 {
+.intro h1:only-of-type, .intro h2:only-of-type {
+    font-family: var(--roboto);
+    margin-bottom: 0;
+}
+/* title and subtitle font */
+
+.intro h1 {
+    font-size: 4rem;
+    padding: 0 1rem;
+}
+
+.intro h1::first-letter {
+    font-size: 5rem;
+}
+/* makes the first letter of the title gray */
+
+.intro h1 ~ h2 {
     font-size: 2rem;
     padding: 0 1.2rem;
-    margin-bottom: 0;
-    font-family: var(--roboto);
 }
+/* the subtitle */
+
+.intro h2::first-line {
+    color: #555555;
+}
+/* makes the subtitle dark gray */
+
+section.intro header:first-child, div.summary {
+    background-color: #F3F3F3;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    margin-left: 11px;
+}
+/* gray box behind the title and summary */
+
+section.intro div:first-of-type {
+    padding-top: .2rem;
+    border-radius: 0 0 .25rem .25rem;
+}
+/* the summary box */
 
 .summary p {
     padding: 0 1.5rem;
     font-size: 1.25rem;
 }
 
-* p {
-    font-family: var(--inter);
-} 
-/* gives all p inter font */
-
-.preamble {
+section.intro div:last-of-type {
     margin-left: 11px;
-    
 }
-
-.preamble p {
-    font-size: 1.5rem; 
-}
-
-.preamble h3 {
-    font-size: 2rem;
-    font-family: var(--roboto);
-}
+/* the preamble */
 
 #zen-supporting {
     display: flex;
@@ -79,38 +118,16 @@ body {
     margin-left: 11px;
 }
 
-#zen-supporting p {
+.preamble p, .main.supporting p {
     font-size: 1.5rem;
 }
+/* paragraph size */
 
-#zen-supporting h3 {
+.preamble h3:nth-child(1), .main.supporting h3 {
     font-size: 2rem;
     font-family: var(--roboto);
 }
-
-.page-wrapper {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    height: 120vh;
-}
-
-::-webkit-scrollbar {
-    display: none;
-}
-/* hides scrollbar */
-
-section.intro > header, div.summary {
-    background-color: #F3F3F3;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
-    margin-left: 11px;
-}
-
-section.intro > div.summary {
-    padding-top: .2rem;
-    border-radius: 0 0 .25rem .25rem;
-}
+/* heading size */
 
 .sidebar {
     margin: 220px 11px 0 0;
@@ -118,13 +135,33 @@ section.intro > div.summary {
     justify-content: left;
     position: absolute;
     background: #D9D9D9;
-    background: linear-gradient(0deg, rgba(217, 217, 217, 1) 0%, rgba(217, 217, 217, 1) 50%, rgba(243, 243, 243, 1) 50%, rgba(243, 243, 243, 1) 100%);
     border-radius: .25rem;
+    font-family: var(--inter);
     top: 0;
     right: 0;
-    height: 202vh;  
+    height: 202vh;
     width: 21.5%;
     z-index: 1;
+}
+
+.wrapper {
+    width: 100%;
+}
+
+.sidebar h3 {
+    display: none;
+}
+/* hides "select a design" */
+
+.design-selection {
+    background-color: #F3F3F3;
+    border-radius: .25rem .25rem 0 0;
+    padding: 1rem 0;
+}
+/* light gray box behind the designs */
+
+.sidebar ul {
+    padding: 0 1.5rem;
 }
 
 .sidebar ul > li {
@@ -134,26 +171,51 @@ section.intro > div.summary {
 }
 
 .design-selection li:not(:last-child)::after {
-    content:"";
+    content: "";
     display: block;
     padding-bottom: 35px;
     border-bottom: 2px solid black;
-    width: 115%;
+    width: 100%;
 }
-
 /* adds seperators */
 
-li a:first-child {
+[class~="design-name"] {
+    display: block;
+    color: black;
+}
+/* design names */
+
+[class~="design-name"]:visited {
+    color: rgb(113, 113, 113);
+}
+
+.designer-name {
+    color: #878787;
+}
+/* makes the "by ___" names gray */
+
+li a:only-child {
     display: block;
 }
+/* links that are alone in their li */
 
-.sidebar h3 {
-    display: none;
+.design-archives .next {
+    margin-top: 2rem;
 }
-/* hides "select a design" */
 
-.design-selection, .zen-resources {
-    justify-content: flex-end;
+.design-archives li + li {
+    margin-top: 1.5rem;
+}
+
+.wrapper div:nth-last-of-type(1) {
+    margin-top: 3rem;
+}
+/* space above the resources links */
+
+footer {
+    text-align: end;
+    margin-right: 30rem;
+    margin-top: 1rem;
 }
 
 footer::before {
@@ -171,59 +233,37 @@ footer::before {
 }
 /* makes the bottom bar + makes it not scroll */
 
-.zen-github {
+footer a:nth-last-child(1) {
     padding-bottom: 7rem;
 }
+/* the github link */
 
-footer {
-    text-align: end;
-    margin-right: 30rem;
-    margin-top: 1rem;
-}
-
-[role="contentinfo"] {
+p[role] {
     color: #878787;
-    font-size: 1rem;
-    font-family: var(--inter);
     text-align: end;
 }
+/* the "by dave shea" line */
 
-.design-archives .next {
-    margin-top: 5rem;
+a:active {
+    color: red;
 }
 
-.design-archives li:not(:first-child) {
-    margin-top: 5rem;
+a:hover, a:focus {
+    color: blue;
 }
 
-.design-name {
+[role="contentinfo"] a[href^="http"]:link {
+    color: #878787;
+}
+
+[role*="info"] a:visited {
     color: black;
 }
 
-.design-name:visited {
-    color: rgb(113, 113, 113);
-}
-
-a:active {
-    color:red
-}
-
-a:hover {
-    color:blue
-}
-
-[role="contentinfo"] a:link {
-    color: #878787;
-}
-
-[role="contentinfo"] a:visited {
-    color:black;
-}
-
-[role="contentinfo"] a:hover {
-    color:blue;
+[role="contentinfo"] a[href$="/"]:hover {
+    color: blue;
 }
 
 ::selection {
-  background: yellow;
+    background: yellow;
 }
