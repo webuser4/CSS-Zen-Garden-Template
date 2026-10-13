@@ -47,7 +47,7 @@ body > div:empty {
 
 .intro h1::before {
     background-image: url(ASSETS/TopSection.png);
-    height: 208px;
+    height: 195px;
     width: 100%;
     content: "";
     position: fixed;
