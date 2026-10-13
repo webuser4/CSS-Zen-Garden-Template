@@ -38,7 +38,7 @@ body > div:empty {
 /* gives all p inter font */
 
 .intro {
-    margin: 220px 0 0 0;
+    margin: 205px 0 0 0;
     display: flex;
     justify-content: left;
     flex-direction: column;
@@ -130,7 +130,7 @@ section.intro div:last-of-type {
 /* heading size */
 
 .sidebar {
-    margin: 220px 11px 0 0;
+    margin: 205px 11px 0 0;
     display: flex;
     justify-content: left;
     position: absolute;
@@ -220,7 +220,7 @@ footer {
 
 footer::before {
     background-image: url(ASSETS/BottomBar.png);
-    height: 96px;
+    height: 90px;
     width: 100%;
     content: "";
     position: fixed;
